@@ -4,10 +4,10 @@ function changeImage() {
   element=document.getElementById('myimage')
 	if (element.src.match("bulbon"))
 	{
-		element.src="/imgs/pic_bulboff.gif";
+		element.src="/resources/imgs/pic_bulboff.gif";
 	}
 	else
 	{
-		element.src="/imgs/pic_bulbon.gif";
+		element.src="/resources/imgs/pic_bulbon.gif";
 	}
 }
