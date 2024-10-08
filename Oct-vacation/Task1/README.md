@@ -5,5 +5,9 @@
 @Author:  李心言
 @Email:  1129200163@qq.com
 
-之前已经安装并且使用过vs了,不必多言.
-要提到的一点是对于原来的一部分函数例如scanf改为scanf_s的使用不是很适应, 感觉变得冗杂了..
+首先下载安装VS code和msys2
+通过msys2安装MinGW-W64
+然后编辑系统环境变量,添加msys64的bin路径
+
+在vs code的extension中添加c/c++扩展包
+至此vs code的c/c++基本配置完毕
