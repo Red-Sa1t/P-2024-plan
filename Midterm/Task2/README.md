@@ -84,4 +84,20 @@ README里面记一些学到的操作和语法吧
       print(f"{i}.{item}")
   ```
 
-  
+  11.17作业更新
+
+  对vue和python接口的学习遇到了相当的困难，多亏了大模型啊，多亏了大模型啊
+
+  使用flask使前端的操作提交给后端，再将后端运行的结果发送到前端，大致思路是这样的
+
+  （靠谱的教程找起来很困难，官方文档理解起来也比较困难，flask的学习参考了https://tutorial.helloflask.com/，接口部分参考https://www.bilibili.com/video/BV1Jr4y1771i/）
+
+​	 记录一下踩的最大的坑
+
+```python
+from flask_cors import CORS
+app = Flask(__name__)
+CORS(app)
+```
+
+通过cors解决跨域请求导致前后端之间的请求阻止问题，虽然我也不知道这个问题为什么会产生，但是cors帮了大忙
