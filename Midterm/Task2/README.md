@@ -87,7 +87,8 @@ README里面记一些学到的操作和语法吧
   11.17作业更新
 
   对vue和python接口的学习遇到了相当的困难，多亏了大模型啊，多亏了大模型啊
-
+  同时使用了flask和fastapi两种框架编写后端，感觉大体结构是相同的
+  其中flask的后端位于backend/app.py,fastapi位于backend/main.py
   使用flask使前端的操作提交给后端，再将后端运行的结果发送到前端，大致思路是这样的
 
   （靠谱的教程找起来很困难，官方文档理解起来也比较困难，flask的学习参考了https://tutorial.helloflask.com/，接口部分参考https://www.bilibili.com/video/BV1Jr4y1771i/）
@@ -95,9 +96,19 @@ README里面记一些学到的操作和语法吧
 ​	 记录一下踩的最大的坑
 
 ```python
+#flask
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
+
+#以及fastapi
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 ```
 
-通过cors解决跨域请求导致前后端之间的请求阻止问题，虽然我也不知道这个问题为什么会产生，但是cors帮了大忙
+通过cors解决跨域请求导致前后端之间的请求阻止问题

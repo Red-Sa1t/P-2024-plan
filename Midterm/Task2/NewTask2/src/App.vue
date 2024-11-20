@@ -3,7 +3,7 @@
     <h1><b>学生信息管理系统</b></h1>
     <form @submit.prevent="addStudent">
       <input v-model="newStudent.name" placeholder="姓名" required>
-      <input style="margin: 10px;"v-model="newStudent.student_id" placeholder="学号" required>
+      <input style="margin: 10px;" v-model="newStudent.student_id" placeholder="学号" required>
       <button type="submit" style="background-color: #c767ff; color: white; padding: 5px 10px; border: none; border-radius: 5px;">添加学生</button>
     </form>
     <input style="line-height: 2;width: 430px;" v-model="searchQuery" placeholder="搜索姓名或学号" @input="searchStudents">
@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     addStudent() {
-      axios.post('http://localhost:5000/students', this.newStudent)
+      axios.post('http://localhost:8000/students', this.newStudent)
         .then(response => {
           this.students.push(response.data);
           this.newStudent = { name: '', student_id: '' };
@@ -59,14 +59,14 @@ export default {
         .catch(error => console.error(error));
     },
     fetchStudents() {
-      axios.get('http://localhost:5000/students')
+      axios.get('http://localhost:8000/students')
         .then(response => {
           this.students = response.data;
         })
         .catch(error => console.error(error));
     },
     deleteStudent(id) {
-      axios.delete(`http://localhost:5000/students/${id}`)
+      axios.delete(`http://localhost:8000/students/${id}`)
         .then(() => {
           this.fetchStudents();
         })
@@ -77,7 +77,7 @@ export default {
       this.selectedStudent = { ...student };
     },
     updateStudent() {
-      axios.put(`http://localhost:5000/students/${this.selectedStudent.id}`, this.selectedStudent)
+      axios.put(`http://localhost:8000/students/${this.selectedStudent.id}`, this.selectedStudent)
         .then(() => {
           this.fetchStudents();
           this.selectedStudent = null;
@@ -89,7 +89,7 @@ export default {
     },
     searchStudents() {
       if (this.searchQuery) {
-        axios.get(`http://localhost:5000/students?query=${this.searchQuery}`)
+        axios.get(`http://localhost:8000/students?query=${this.searchQuery}`) 
           .then(response => {
             this.students = response.data;
           })
@@ -107,8 +107,7 @@ export default {
 
 <style>
 #app {
-  background-color: #4f4252; /* 例如，这里设置为白色 */
-  /* 确保背景颜色应用到整个视口高度 */
+  background-color: #4f4252;
   min-height: 100vh;
 }
 table {
@@ -134,5 +133,4 @@ button {
 button:hover {
   background-color: #c6c6c6;
 }
-
 </style>
